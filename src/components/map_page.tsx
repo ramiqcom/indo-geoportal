@@ -12,11 +12,17 @@ export default function MapPage({
   defaultStates: { basemap: Option; basemaps: Option[] };
 }) {
   const [basemap, setBasemap] = useState(defaultStates.basemap);
+  const [expandVisible, setExpandVisible] = useState(false);
+  const [panelSelect, setPanelSelect] = useState<string>();
 
   const states = {
     basemap,
     setBasemap,
     basemaps: defaultStates.basemaps,
+    expandVisible,
+    setExpandVisible,
+    panelSelect,
+    setPanelSelect,
   };
 
   return (

@@ -5,7 +5,11 @@ export type Option = { label: string; value: any };
 export type SetState<T> = Dispatch<SetStateAction<T>>;
 
 export type GlobalContext = {
-  basemap?: Option;
-  setBasemap?: SetState<Option>;
-  basemaps?: Option[];
+  basemap: Option;
+  setBasemap: SetState<Option>;
+  basemaps: Option[];
+  expandVisible: boolean;
+  setExpandVisible: SetState<boolean>;
+  panelSelect: string;
+  setPanelSelect: SetState<string>;
 };
