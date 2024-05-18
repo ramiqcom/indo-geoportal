@@ -8,7 +8,9 @@
     "value": "https://tiles.stadiamaps.com/styles/alidade_smooth_dark.json"
   },
   {
-    "label": "Alidade Satellite",
-    "value": "https://tiles.stadiamaps.com/styles/alidade_satellite.json"
-  }
+    "label": "Stadia Outdoor",
+    "value": "https://tiles.stadiamaps.com/styles/outdoors.json"
+  },
+  { "label": "Stamen Terrain", "value": "https://tiles.stadiamaps.com/styles/stamen_terrain.json" },
+  { "label": "OSM Bright", "value": "https://tiles.stadiamaps.com/styles/osm_bright.json" }
 ]

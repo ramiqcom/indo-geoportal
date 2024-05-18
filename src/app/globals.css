@@ -86,6 +86,10 @@ button {
   color: #e8e6e3;
   border: none;
   background-color: #363636;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
 }
 
 button:enabled:hover {
@@ -165,8 +169,14 @@ button:disabled {
   background-color: #363636;
 }
 
-.option-button:hover {
-  background-color: #6b6b6b;
+.option-button {
+  font-size: small;
+  border: thin solid #e8e6e3;
+}
+
+.option-button:disabled {
+  color: #e8e6e3;
+  border: none;
 }
 
 #map {

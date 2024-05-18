@@ -45,17 +45,17 @@ function LeftPanelExpand() {
 }
 
 function BasemapSelect() {
-  const { basemaps, setBasemap } = useContext(Store);
+  const { basemap, basemaps, setBasemap } = useContext(Store);
 
   const basemapsList = basemaps.map((op, index) => (
-    <div
+    <button
       className='option-button'
+      disabled={basemap.value == op.value}
       key={index}
-      style={{ border: 'thin solid white', padding: '1vh', cursor: 'default' }}
       onClick={() => setBasemap(op)}
     >
       {op.label}
-    </div>
+    </button>
   ));
 
   return <div className='flexible vertical small-gap'>{basemapsList}</div>;
