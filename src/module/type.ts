@@ -1,10 +1,40 @@
 import { Dispatch, SetStateAction } from 'react';
 
-export type Option = { label: string; value: any };
+export interface Option {
+  label: string;
+  value: any;
+}
+
+export interface OptionFeature extends Option {
+  icon: string;
+}
+
+export interface OptionLayer extends Option {
+  value: string;
+  asset_id: string;
+  type: 'Image' | 'ImageCollection' | 'FeatureCollection';
+  vis: VisObject;
+  url?: string;
+}
 
 export type SetState<T> = Dispatch<SetStateAction<T>>;
 
-export type GlobalContext = {
+export interface VisObject {
+  bands?: string[] | string;
+  min?: number[] | number;
+  max?: number[] | number;
+  palette?: string[] | string;
+  color?: string;
+  opacity?: number;
+}
+
+export interface MapId {
+  mapid: string;
+  urlFormat: string;
+  image: Object;
+}
+
+export interface GlobalContext {
   basemap: Option;
   setBasemap: SetState<Option>;
   basemaps: Option[];
@@ -12,4 +42,12 @@ export type GlobalContext = {
   setExpandVisible: SetState<boolean>;
   panelSelect: string;
   setPanelSelect: SetState<string>;
-};
+  layer: OptionLayer;
+  setLayer: SetState<OptionLayer>;
+  layers: OptionLayer[];
+  features: OptionFeature[];
+  urlDict: Record<string, string>;
+  setUrlDict: SetState<Record<string, string>>;
+  showLayer: boolean;
+  setShowLayer: SetState<boolean>;
+}

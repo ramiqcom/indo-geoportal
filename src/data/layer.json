@@ -1,0 +1,10 @@
+[
+  {
+    "label": "Watershed",
+    "value": "watershed",
+    "asset_id": "projects/ee-ramiqcom/assets/skripsi/Batas_DAS_KLHK",
+    "type": "FeatureCollection",
+    "vis": { "color": "blue" },
+    "source": "https://sipdas.menlhk.go.id/"
+  }
+]

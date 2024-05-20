@@ -1,0 +1,4 @@
+[
+  { "label": "Basemap", "value": "basemap", "icon": "public" },
+  { "label": "Layer", "value": "layer", "icon": "map" }
+]
