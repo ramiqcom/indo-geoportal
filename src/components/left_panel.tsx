@@ -1,8 +1,11 @@
+import basemaps from '@/data/basemap.json';
+import features from '@/data/feature.json';
+import layers from '@/data/layer.json';
 import { Store } from '@/module/store';
 import { useContext } from 'react';
 
 export default function LeftPanel() {
-  const { setExpandVisible, setPanelSelect, features } = useContext(Store);
+  const { setExpandVisible, setPanelSelect } = useContext(Store);
 
   const featuresDiv = features.map((feat, index) => {
     const { value, label, icon } = feat;
@@ -54,7 +57,7 @@ function LeftPanelExpand() {
 }
 
 function BasemapSelect() {
-  const { basemap, basemaps, setBasemap } = useContext(Store);
+  const { basemap, setBasemap } = useContext(Store);
 
   const basemapsList = basemaps.map((op, index) => (
     <button
@@ -71,7 +74,7 @@ function BasemapSelect() {
 }
 
 function LayerSelect() {
-  const { layer, setLayer, layers, showLayer, setShowLayer } = useContext(Store);
+  const { layer, setLayer, showLayer, setShowLayer } = useContext(Store);
 
   const layerList = layers.map((op, index) => (
     <button

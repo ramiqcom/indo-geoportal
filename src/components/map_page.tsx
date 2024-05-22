@@ -1,22 +1,15 @@
 'use client';
 
 import { Store } from '@/module/store';
-import { Option, OptionFeature, OptionLayer } from '@/module/type';
+import { OptionLayer } from '@/module/type';
 import { useState } from 'react';
 import LeftPanel from './left_panel';
 import MapCanvas from './map';
+import basemaps from '@/data/basemap.json';
 
-export default function MapPage({
-  defaultStates,
-}: {
-  defaultStates: {
-    basemap: Option;
-    basemaps: Option[];
-    features: OptionFeature[];
-    layers: OptionLayer[];
-  };
-}) {
-  const [basemap, setBasemap] = useState(defaultStates.basemap);
+
+export default function MapPage() {
+  const [basemap, setBasemap] = useState(basemaps[0]);
   const [expandVisible, setExpandVisible] = useState(false);
   const [panelSelect, setPanelSelect] = useState<string>();
   const [layer, setLayer] = useState<OptionLayer>();
@@ -26,15 +19,12 @@ export default function MapPage({
   const states = {
     basemap,
     setBasemap,
-    basemaps: defaultStates.basemaps,
     expandVisible,
     setExpandVisible,
     panelSelect,
     setPanelSelect,
     layer,
     setLayer,
-    features: defaultStates.features,
-    layers: defaultStates.layers,
     urlDict,
     setUrlDict,
     showLayer,

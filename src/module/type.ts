@@ -12,7 +12,7 @@ export interface OptionFeature extends Option {
 export interface OptionLayer extends Option {
   value: string;
   asset_id: string;
-  type: 'Image' | 'ImageCollection' | 'FeatureCollection';
+  type: string;
   vis: VisObject;
   url?: string;
 }
@@ -37,15 +37,12 @@ export interface MapId {
 export interface GlobalContext {
   basemap: Option;
   setBasemap: SetState<Option>;
-  basemaps: Option[];
   expandVisible: boolean;
   setExpandVisible: SetState<boolean>;
   panelSelect: string;
   setPanelSelect: SetState<string>;
   layer: OptionLayer;
   setLayer: SetState<OptionLayer>;
-  layers: OptionLayer[];
-  features: OptionFeature[];
   urlDict: Record<string, string>;
   setUrlDict: SetState<Record<string, string>>;
   showLayer: boolean;
