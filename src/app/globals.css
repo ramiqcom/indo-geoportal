@@ -215,3 +215,14 @@ button:disabled {
   width: 27.5vh;
   height: 100%;
 }
+
+#status {
+  z-index: 999999999;
+  position: absolute;
+  width: 30vh;
+  height: 7vh;
+  background-color: #363636;
+  right: 2vh;
+  bottom: 5vh;
+  font-size: medium;
+}

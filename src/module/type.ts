@@ -47,4 +47,6 @@ export interface GlobalContext {
   setUrlDict: SetState<Record<string, string>>;
   showLayer: boolean;
   setShowLayer: SetState<boolean>;
+  statusMessage: string;
+  setStatusMessage: SetState<string>;
 }

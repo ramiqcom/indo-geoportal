@@ -6,7 +6,7 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 import { useContext, useEffect, useState } from 'react';
 
 export default function MapCanvas() {
-  const { basemap, layer, urlDict, setUrlDict, showLayer } = useContext(Store);
+  const { basemap, layer, urlDict, setUrlDict, showLayer, setStatusMessage } = useContext(Store);
 
   const mapDivId = 'map';
   const layerId = 'layer';
@@ -16,17 +16,23 @@ export default function MapCanvas() {
 
   // Function to generate the url
   async function generateLayer(layer: OptionLayer) {
+    // Set message
+    setStatusMessage('Calling layer...');
+
     let url: string;
 
     if (urlDict[layer.value]) {
       url = urlDict[layer.value];
     } else {
-      const { urlFormat } = await getLayers(layer);
-      url = urlFormat;
-
-      const newDict = urlDict;
-      newDict[layer.value] = url;
-      setUrlDict(newDict);
+      try {
+        const { urlFormat } = await getLayers(layer);
+        url = urlFormat;
+        const newDict = urlDict;
+        newDict[layer.value] = url;
+        setUrlDict(newDict);
+      } catch ({ message }) {
+        setStatusMessage(message);
+      }
     }
 
     if (map.getSource(layerId)) {
@@ -46,6 +52,8 @@ export default function MapCanvas() {
         minzoom: 0,
       });
     }
+
+    setStatusMessage(undefined);
   }
 
   useEffect(() => {

@@ -1,15 +1,7 @@
+import 'node-self';
+
 import ee from '@google/earthengine';
 import { MapId, VisObject } from '../module/type';
-
-export async function getKey(): Promise<Record<string, any>> {
-  const res = await fetch(process.env.SERVICE_ACCOUNT_KEY_URL, {
-    headers: {
-      Authorization: `token ${process.env.GH_TOKEN}`,
-    },
-  });
-  const key = await res.json();
-  return key;
-}
 
 /**
  * Function to authenticate EE
