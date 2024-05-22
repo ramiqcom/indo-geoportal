@@ -49,4 +49,6 @@ export interface GlobalContext {
   setShowLayer: SetState<boolean>;
   statusMessage: string;
   setStatusMessage: SetState<string>;
+  info: JSX.Element | JSX.Element[];
+  setInfo: SetState<JSX.Element | JSX.Element[]>;
 }

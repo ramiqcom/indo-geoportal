@@ -7,6 +7,7 @@ import { useState } from 'react';
 import LeftPanel from './left_panel';
 import MapCanvas from './map';
 import { Status } from './status';
+import { Info } from './info';
 
 export default function MapPage() {
   const [basemap, setBasemap] = useState(basemaps[0]);
@@ -16,6 +17,7 @@ export default function MapPage() {
   const [urlDict, setUrlDict] = useState<Record<string, string>>({});
   const [showLayer, setShowLayer] = useState<boolean>(true);
   const [statusMessage, setStatusMessage] = useState<string>();
+  const [info, setInfo] = useState<JSX.Element | JSX.Element[]>();
 
   const states = {
     basemap,
@@ -32,10 +34,13 @@ export default function MapPage() {
     setShowLayer,
     statusMessage,
     setStatusMessage,
+    info,
+    setInfo,
   };
 
   return (
     <Store.Provider value={states}>
+      <Info />
       <Status />
       <LeftPanel />
       <MapCanvas />

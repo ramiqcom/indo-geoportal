@@ -1,4 +1,4 @@
-import { getLayers } from '@/module/layer';
+import { getInfo, getLayers } from '@/module/server';
 import { Store } from '@/module/store';
 import { OptionLayer } from '@/module/type';
 import { Map, RasterTileSource } from 'maplibre-gl';
@@ -6,7 +6,8 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 import { useContext, useEffect, useState } from 'react';
 
 export default function MapCanvas() {
-  const { basemap, layer, urlDict, setUrlDict, showLayer, setStatusMessage } = useContext(Store);
+  const { basemap, layer, urlDict, setUrlDict, showLayer, setStatusMessage, setInfo } =
+    useContext(Store);
 
   const mapDivId = 'map';
   const layerId = 'layer';
@@ -80,6 +81,24 @@ export default function MapCanvas() {
 
       map.on('styledata', async () => {
         await generateLayer(layer);
+      });
+
+      map.on('click', async (e) => {
+        setInfo(<div>Loading...</div>);
+        const coord = e.lngLat.toArray();
+
+        try {
+          const info = await getInfo(coord, layer);
+          const keys = Object.keys(info);
+          const divs = keys.map((key, index) => (
+            <div key={index}>
+              {key}: {info[key]}
+            </div>
+          ));
+          setInfo(divs);
+        } catch ({ message }) {
+          setInfo(<div>{message}</div>);
+        }
       });
     }
   }, [mapLoaded, layer]);
