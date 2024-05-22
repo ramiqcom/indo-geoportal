@@ -8,6 +8,7 @@ import { OptionLayer } from './type';
 
 export async function getLayers({ asset_id, vis, type }: OptionLayer) {
   const key = await getKey();
+  console.log(key)
 
   // Authenticate
   await authenticate(key);
@@ -15,6 +16,8 @@ export async function getLayers({ asset_id, vis, type }: OptionLayer) {
   let data: ee.Image | ee.ImageCollection | ee.FeatureCollection = ee[type](asset_id);
 
   const { urlFormat } = await getMapId(data, vis);
+
+  console.log(urlFormat)
 
   return { urlFormat };
 }
